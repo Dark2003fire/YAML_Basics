@@ -1,0 +1,306 @@
+#YAML :- (YAML Ain't Markup Language) previously it is known as (Yet Another Markup Language) 
+#It's not a programming Language it's a Data Format used to exchange data .
+#It's similar to XAML and JSON.
+#In YAML u can store only data and not Commands.
+# YAML is Known as Data Serialisation languages.
+# Data Serialisation means the process of  converting the objects(Data+Code) into Series of bytes 
+#that saves the state of Objects in the form i.e easliy transformable.
+#Some of the Data Serialisation languages are :- YAML  , JSON  , and XAML.
+#Object to File is Serilisation and File to Objects is known as Deserialisation.
+#YAML is used in Configuration files like Docker  , Kubernetics   , logs and caches. and etc.
+
+#Benefits of YAML :-->
+     #simple and easy to read . 
+     # It has  a strict Syntax- like indentation is imp.
+     # Easily like convertible 
+     # Most Languages used YAML
+     # It is more powerful when  representing Complex data.
+     # we can used various tools like parser(reading the data) and etc.
+
+
+# YAML uses Key-Value Pairs.
+
+
+"Hello" :  "This is just YAML key value Pair"
+"Key" : "Value"
+---
+#Lists( List is created by using dash)
+- Siddhant
+- Hitesh
+- Raji
+- Asjad
+---
+# indentation is extremely imp in YAML E.g:--
+
+#Arrays:---> 
+Cities:
+    - New Delhi
+    - Mumbai
+    - Pune
+    - Gurgaon
+---
+Cities : [New Delhi , Mumbai , Pune, Gurgaon , Banglore]
+{Fruits : "Mango" , Vegetables : "Potato" , Cities : "Banglore"} #Key Value Pairs.
+
+
+...   # Document is finished.
+
+# Datatypes in YAML :---> 
+#anything which is written after Colon is Variable 
+#String Variables :-->
+Name : Hitesh Jha
+Bio : I'm Hitesh Jha and doing Computer Science degree from SPPU .
+Fruits : Apple , Banana , Pomegranate
+#Writing a Single Line in Multiple line by using >
+Message: > this is  just single line 
+which is 
+written in
+multiple lines
+...
+
+#another datatypes:-->
+# Int :--
+number : 56 
+#Floating Point;--
+marks : 98.36 
+#boolean Datatype:-
+booleanValue : No  ,True   , False , Yes 
+
+#Specify the type:-->
+#To specify the which datatype u r using then add the !! Syntax :-  !!DataType varaible E.g - !!int 23
+
+Zero : !!int 0
+positive: !!int 90
+negative : !!int -45
+binarynum: !!int 0b111001
+octalnum: !!int 06575
+hexa: !!int 0x45
+CommaValue: !!int +540_000
+
+#floating point numbers
+marks : !!float 56.54
+infinte : !!float 3.14444444
+
+#Boolean 
+Bool: !!bool True 
+#string
+Name : !!string Hitesh Jha
+
+
+
+#Null 
+Surname : !!null NULL 
+~: This is null key
+
+#
+#Dates and time
+Date : !!timestamp 2022-07-09
+india Time: 2022-07-09T011:36:52.10 + 11:36
+No time Zone:  2022-07-09T011:36:52.10
+
+#Exponential Numbers :-
+exponential num : 6.022E23
+
+
+
+
+
+#Advanced Datatypes:--->
+#Lists :-->
+#Lists( List is created by using dash)
+Students: !!seq
+    - Hitesh Jha
+    - Raji Patel
+    - Faizan Baig
+    - Hamza Shaikh
+    - Yasir 
+    - Mohammad Asjad
+
+#Like this also 
+Students : [Hitesh Jha , Raji Patel , faizan Baig , Hamza  Shaikh  , Yasir   , Mohammad Asjad]
+
+#Sparse Seq : --> Some of the keys of the seq will be empty
+
+Sparse Seq: 
+    - Hey
+    - How
+    - 
+    - null
+    - Sup
+
+#Nested Sequences :--> for nested sequences we used dash -
+Student:
+    - Hitesh Jha
+    - Raji Patel
+    - Faizan Baig
+- 
+ - Sufiyan Shaikh
+ - Mohammad Asjad
+ - Mohammad Rafi Shaikh
+
+- 
+ - Hamza Shaikh
+ - Yasir
+
+
+
+#   Maps : -> Key Value Pairs.
+# !!map
+
+#Nested Maping within Maps :-->
+name : Hitesh Jha
+role:
+  age : 19
+  job : Student
+  DOB : !!timestamp 2003-04-03
+Role: {age: 19 ,  Job : Student }
+
+#Pairs keys may have Duplicate values:
+# !!pairs
+    
+    pair example: !!pairs
+     - job: student
+     - job : Teacher
+#same as 
+pair example : !!pairs [job: Student    , job : Teacher]    
+# This will be array of ab hashtables
+
+
+
+#!! set will allow you to have unique values
+names : !!set
+  ? Hitesh
+  ? Asjad
+  ? Mohammad
+  ? Faizan 
+  ? Raji
+
+
+#dictionary : !!omap
+
+People : !!omap
+    - Hitesh:
+        name : Jha
+        age : 19
+        Height : 180
+    - Raji:
+        name : Patel
+        age : 21
+        Height : 178
+    - Faizan :
+        name : Baig
+        age : 21
+        Height : 180
+    - Asjad :
+        name : Mohammad
+        age : 20
+        Height : 178
+
+
+
+
+# reusing some properties:--> Reusing the some properties by  using Anchors(Means what u want to copy and whewre you want to copy it).
+
+Likings : &likes
+     Fav Fruit : Mango
+     Dislikes: Pomegranate
+
+Person1: 
+    Name : Hitesh 
+    Fav Fruit : Mango
+    Dislikes: Pomegranate
+
+Person2 : 
+    Name : Asjad
+    Fav Fruit : Mango
+    Dislikes: Pomegranate
+
+Person3 : 
+    Name : Mohammad
+    Fav Fruit : Mango
+    Dislikes: Pomegranate
+
+Person4 :
+    Name: Faizan
+    Fav Fruit : Mango
+    Dislikes: Pomegranate
+
+Person4:
+    Name: Sufiyan
+    Fav Fruit : Mango
+    Dislikes: Pomegranate
+
+Person5: 
+    Name : Hamza
+    Fav Fruit : Mango
+    Dislikes: Pomegranate
+
+#Now if we don't want to write the properties again and again the we will use <<:*anchor_names
+
+Person5:
+    Name : yasir
+    <<: *likes
+
+# We can Overwrites the properties like 
+ Person1:
+    Name: Hitesh 
+    <<: *likes
+    Dislikes: Blue Berries
+
+
+# Storing the data in XML
+<?xml version"1.0" encoding"UTF-8">
+<School name = "DPS" principal="Someone">
+    <Students>
+        <student1>
+            <Roll_nos>8865</Roll_nos>
+            <Name>"Hitesh"</Name>
+            <Marks>94</Marks>
+
+        </student>
+        <student2>
+
+            <Roll_nos>8866</Roll_nos>
+            <Name>"Raji"</Name>
+            <Marks>95</Marks>
+            
+        </student2>
+        <student3>
+
+            <Roll_nos>8867</Roll_nos>
+            <Name>"Faizan"</Name>
+            <Marks>95</Marks>
+            
+        </student3>
+    </Students>
+
+</School>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
